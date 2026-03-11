@@ -39,7 +39,7 @@ resource "random_id" "prefix" {
 # Azure Region Lookup
 #----------------------------------------------------------
 module "mod_azure_region_lookup" {
-  source  = "azurenoops/overlays-azregions-lookup/azurerm"
+  source  = "POps-Rox/tf-az-overlays-azregions-lookup/azurerm"
   version = "~> 1.0.0"
 
   azure_region = "eastus"
@@ -49,7 +49,7 @@ module "mod_azure_region_lookup" {
 # Resource Group Creation
 #----------------------------------------------------------
 module "mod_redis_rg" {
-  source  = "azurenoops/overlays-resource-group/azurerm"
+  source  = "POps-Rox/tf-az-overlays-resource-group/azurerm"
   version = "~> 1.0.1"
 
   location                = module.mod_azure_region_lookup.location_cli
@@ -84,7 +84,7 @@ module "mod_redis" {
   depends_on = [
     module.mod_redis_rg
   ]
-  source  = "azurenoops/overlays-redis/azurerm"
+  source  = "POps-Rox/tf-az-overlays-redis/azurerm"
   version = "~> 1.0.0"
 
   # By default, this module will create a resource group and 
