@@ -27,7 +27,7 @@ resource "azurerm_private_endpoint" "pep" {
   tags                = merge({ "Name" = format("%s-private-endpoint", local.redis_name) }, var.add_tags, )
 
   private_service_connection {
-   name                           = "rediscache-privatelink"
+    name                           = "rediscache-privatelink"
     is_manual_connection           = false
     private_connection_resource_id = azurerm_redis_cache.redis.id
     subresource_names              = ["redisCache"]
@@ -52,7 +52,7 @@ resource "azurerm_private_dns_zone" "dns_zone" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "vnet_link" {
-  count                 = var.existing_private_dns_zone == null && (var.existing_private_subnet_name != null || var.enable_private_endpoint)  ? 1 : 0
+  count                 = var.existing_private_dns_zone == null && (var.existing_private_subnet_name != null || var.enable_private_endpoint) ? 1 : 0
   name                  = "vnet-private-zone-link"
   resource_group_name   = local.resource_group_name
   private_dns_zone_name = var.existing_private_dns_zone == null ? azurerm_private_dns_zone.dns_zone.0.name : var.existing_private_dns_zone
@@ -65,7 +65,7 @@ resource "azurerm_private_dns_a_record" "a_rec" {
   depends_on = [
     azurerm_private_dns_zone.dns_zone
   ]
-  count               = var.enable_private_endpoint  ? 1 : 0
+  count               = var.enable_private_endpoint ? 1 : 0
   name                = lower(azurerm_redis_cache.redis.name)
   zone_name           = var.existing_private_dns_zone == null ? azurerm_private_dns_zone.dns_zone.0.name : var.existing_private_dns_zone
   resource_group_name = local.resource_group_name
