@@ -32,10 +32,10 @@ resource "azurerm_redis_cache" "redis" {
   family   = lookup(local.redis_family_map, var.sku_name)
   sku_name = var.sku_name
 
-  enable_non_ssl_port = var.allow_non_ssl_connections
-  minimum_tls_version = var.minimum_tls_version
-  shard_count         = var.sku_name == "Premium" ? var.cluster_shard_count : 0
-  capacity            = var.capacity
+  non_ssl_port_enabled = var.allow_non_ssl_connections
+  minimum_tls_version  = var.minimum_tls_version
+  shard_count          = var.sku_name == "Premium" ? var.cluster_shard_count : 0
+  capacity             = var.capacity
 
   private_static_ip_address = var.private_static_ip_address
   subnet_id                 = var.existing_subnet_name != null ? element(data.azurerm_subnet.existing_snet[*].id, 0) : null
@@ -51,7 +51,7 @@ resource "azurerm_redis_cache" "redis" {
       aof_backup_enabled              = redis_configuration.value.aof_backup_enabled
       aof_storage_connection_string_0 = redis_configuration.value.aof_storage_connection_string_0
       aof_storage_connection_string_1 = redis_configuration.value.aof_storage_connection_string_1
-      enable_authentication           = redis_configuration.value.enable_authentication
+      authentication_enabled          = redis_configuration.value.enable_authentication
       maxmemory_reserved              = redis_configuration.value.maxmemory_reserved
       maxmemory_delta                 = redis_configuration.value.maxmemory_delta
       maxmemory_policy                = redis_configuration.value.maxmemory_policy
