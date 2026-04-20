@@ -176,9 +176,9 @@ module "mod_redis" {
 | [azurerm_redis_cache.redis](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache)                                                         | resource    |
 | [azurerm_redis_firewall_rule.redis_fw_rule](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_firewall_rule)                                 | resource    |
 | [azurerm_storage_account.redis_storage](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)                                         | resource    |
-| [popsrox_utils_resource_name.data_storage](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                          | data source |
-| [popsrox_utils_resource_name.redis](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                                 | data source |
-| [popsrox_utils_resource_name.redis_fw_rule](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                         | data source |
+| [popsrox_resource_name.data_storage](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                          | data source |
+| [popsrox_resource_name.redis](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                                 | data source |
+| [popsrox_resource_name.redis_fw_rule](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                         | data source |
 | [azurerm_private_endpoint_connection.pip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/private_endpoint_connection)                        | data source |
 | [azurerm_redis_cache.redis](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/redis_cache)                                                      | data source |
 | [azurerm_resource_group.rgrp](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group)                                                 | data source |
