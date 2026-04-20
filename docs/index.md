@@ -1,8 +1,8 @@
 # Azure NoOps Redis Cache Overlay Module
 
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/azurenoops/overlays-redis/azurerm/)
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/POps-Rox/overlays-redis/azurerm/)
 
-This Overlay terraform module can create a Redis Cache and manage related parameters (Threat protection, Redis Cache FW Rules, Private Endpoints, etc.) to be used in a [SCCA compliant Network](https://registry.terraform.io/modules/azurenoops/overlays-management-hub/azurerm/latest).
+This Overlay terraform module can create a Redis Cache and manage related parameters (Threat protection, Redis Cache FW Rules, Private Endpoints, etc.) to be used in a [SCCA compliant Network](https://registry.terraform.io/modules/POps-Rox/overlays-management-hub/azurerm/latest).
 
 ## SCCA Compliance
 
@@ -146,21 +146,21 @@ module "mod_redis" {
 | Name                                                                                        | Version  |
 |---------------------------------------------------------------------------------------------|----------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform)                   | >= 1.3   |
-| <a name="requirement_azurenoopsutils"></a> [azurenoopsutils](#requirement\_azurenoopsutils) | ~> 1.0.4 |
+| <a name="requirement_popsrox-utils"></a> [popsrox-utils](#requirement\_popsrox-utils) | ~> 1.0.4 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm)                         | ~> 3.22  |
 
 ## Providers
 
 | Name                                                                                  | Version  |
 |---------------------------------------------------------------------------------------|----------|
-| <a name="provider_azurenoopsutils"></a> [azurenoopsutils](#provider\_azurenoopsutils) | ~> 1.0.4 |
+| <a name="provider_popsrox-utils"></a> [popsrox-utils](#provider\_popsrox-utils) | ~> 1.0.4 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm)                         | ~> 3.22  |
 
 ## Modules
 
 | Name                                                                                                            | Source                                       | Version  |
 |-----------------------------------------------------------------------------------------------------------------|----------------------------------------------|----------|
-| <a name="module_mod_azure_region_lookup"></a> [mod\_azure\_region\_lookup](#module\_mod\_azure\_region\_lookup) | azurenoops/overlays-azregions-lookup/azurerm | ~> 1.0.0 |
+| <a name="module_mod_azure_region_lookup"></a> [mod\_azure\_region\_lookup](#module\_mod\_azure\_region\_lookup) | POps-Rox/overlays-azregions-lookup/azurerm | ~> 1.0.0 |
 
 ## Resources
 
@@ -176,9 +176,9 @@ module "mod_redis" {
 | [azurerm_redis_cache.redis](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache)                                                         | resource    |
 | [azurerm_redis_firewall_rule.redis_fw_rule](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_firewall_rule)                                 | resource    |
 | [azurerm_storage_account.redis_storage](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)                                         | resource    |
-| [azurenoopsutils_resource_name.data_storage](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name)                          | data source |
-| [azurenoopsutils_resource_name.redis](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name)                                 | data source |
-| [azurenoopsutils_resource_name.redis_fw_rule](https://registry.terraform.io/providers/azurenoops/azurenoopsutils/latest/docs/data-sources/resource_name)                         | data source |
+| [popsrox_resource_name.data_storage](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                          | data source |
+| [popsrox_resource_name.redis](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                                 | data source |
+| [popsrox_resource_name.redis_fw_rule](https://registry.terraform.io/providers/POps-Rox/azutils/latest/docs/data-sources/resource_name)                         | data source |
 | [azurerm_private_endpoint_connection.pip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/private_endpoint_connection)                        | data source |
 | [azurerm_redis_cache.redis](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/redis_cache)                                                      | data source |
 | [azurerm_resource_group.rgrp](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group)                                                 | data source |

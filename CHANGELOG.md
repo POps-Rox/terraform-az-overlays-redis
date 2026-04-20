@@ -1,10 +1,10 @@
 # Changelog
 
-## [v1.0.2](https://github.com/azurenoops/terraform-azurerm-overlays-redis/tree/v1.0.2) (2023-04-28)
+## [v1.0.2](https://github.com/POps-Rox/terraform-az-overlays-redis/tree/v1.0.2) (2023-04-28)
 
-## [v1.0.1](https://github.com/azurenoops/terraform-azurerm-overlays-redis/tree/v1.0.1) (2023-04-28)
+## [v1.0.1](https://github.com/POps-Rox/terraform-az-overlays-redis/tree/v1.0.1) (2023-04-28)
 
-## [v1.0.0](https://github.com/azurenoops/terraform-azurerm-overlays-redis/tree/v1.0.0) (2023-02-23)
+## [v1.0.0](https://github.com/POps-Rox/terraform-az-overlays-redis/tree/v1.0.0) (2023-02-23)
 
 
 

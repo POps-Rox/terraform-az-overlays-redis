@@ -1,4 +1,4 @@
-module github.com/azurenoops/terraform-azurerm-overlays-redis
+module github.com/POps-Rox/terraform-az-overlays-redis
 
 go 1.19
 
