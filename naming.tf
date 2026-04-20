@@ -1,4 +1,4 @@
-data "azurenoopsutils_resource_name" "redis" {
+data "popsrox_utils_resource_name" "redis" {
   name          = var.workload_name
   resource_type = "azurerm_redis_cache"
   prefixes      = [var.org_name, module.mod_azure_region_lookup.location_short]
@@ -8,7 +8,7 @@ data "azurenoopsutils_resource_name" "redis" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "data_storage" {
+data "popsrox_utils_resource_name" "data_storage" {
   name          = "${var.workload_name}redis"
   resource_type = "azurerm_storage_account"
   prefixes      = [var.org_name, module.mod_azure_region_lookup.location_short]
@@ -18,7 +18,7 @@ data "azurenoopsutils_resource_name" "data_storage" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "redis_fw_rule" {
+data "popsrox_utils_resource_name" "redis_fw_rule" {
   for_each = var.authorized_cidrs
 
   name          = var.workload_name
