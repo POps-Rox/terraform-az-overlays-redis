@@ -1,10 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: tf-az-overlays-redis
+  name: terraform-az-overlays-redis
   description: Terraform overlay module for Azure Cache for Redis
   annotations:
-    github.com/project-slug: POps-Rox/tf-az-overlays-redis
+    github.com/project-slug: POps-Rox/terraform-az-overlays-redis
     backstage.io/techdocs-ref: dir:.
   tags:
     - terraform
@@ -12,7 +12,7 @@ metadata:
     - azure
     - platform-ops
   links:
-    - url: https://github.com/POps-Rox/tf-az-overlays-redis
+    - url: https://github.com/POps-Rox/terraform-az-overlays-redis
       title: GitHub Repository
       icon: github
 spec:
