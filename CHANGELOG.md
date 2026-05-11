@@ -1,5 +1,19 @@
 # Changelog
 
+## [v2.0.0] - 2026-05-11
+
+### Breaking changes
+
+* Upgraded to `azurerm` provider `~> 4.20`. Consumers must set `ARM_SUBSCRIPTION_ID` (azurerm 4.x makes `subscription_id` required for the `azurerm` provider).
+* Raised Terraform CLI floor from `>= 1.3` to `>= 1.10`.
+* Added `azure/azapi ~> 2.0` to `required_providers` for fleet alignment (not directly referenced today).
+
+### Notes
+
+* No `azurerm_*` resource arguments in this module required renaming (no `enable_https_traffic_only`, no `enable_rbac_authorization`, no `retention_policy`, no `private_endpoint_network_policies_enabled` hits).
+* `popsrox` local provider name retained (renaming would invalidate all `popsrox_resource_name` data sources used downstream).
+
+
 ## [v1.0.2](https://github.com/POps-Rox/terraform-az-overlays-redis/tree/v1.0.2) (2023-04-28)
 
 ## [v1.0.1](https://github.com/POps-Rox/terraform-az-overlays-redis/tree/v1.0.1) (2023-04-28)
