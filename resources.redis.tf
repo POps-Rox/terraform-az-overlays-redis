@@ -77,4 +77,3 @@ resource "azurerm_redis_cache" "redis" {
     }
   }
 }
-

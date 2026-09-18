@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+* Migrated `azurerm` provider constraints to 5.x (`>= 5.0, < 6.0` for the module and `~> 5.6` for examples/tests).
+* Updated private DNS zone link and A record configuration for `azurerm` 5.x `private_dns_zone_id` requirements.
+
 ## [v2.0.0] - 2026-05-11
 
 ### Breaking changes

@@ -48,6 +48,10 @@ jobs:
             -not -path '*/.terraform/*' -not -path '*/.git/*' \
             -exec dirname {} \; | sort -u)
           echo "Discovered ${#dirs[@]} Terraform directories"
+          if [ "${#dirs[@]}" -eq 0 ]; then
+            echo "::error::No Terraform directories discovered"
+            exit 1
+          fi
           fail=0; ok=0
           for d in "${dirs[@]}"; do
             echo "::group::$d"
@@ -63,6 +67,23 @@ jobs:
           echo "validated OK : $ok"
           echo "FAILED       : $fail"
           exit $((fail > 0 ? 1 : 0))
+
+  terraform-test:
+    name: "🧪 Test"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.10.5"
+
+      - name: Terraform Test
+        run: |
+          terraform init -backend=false -no-color
+          terraform test -no-color
 
   tflint:
     name: "🔍 TFLint"
