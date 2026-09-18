@@ -51,14 +51,19 @@ resource "azurerm_private_dns_zone" "dns_zone" {
   tags                = merge({ "Name" = format("%s", "Azure-Redis-Cache-Private-DNS-Zone") }, var.add_tags, )
 }
 
+data "azurerm_private_dns_zone" "existing_dns_zone" {
+  count               = var.existing_private_dns_zone != null && var.enable_private_endpoint ? 1 : 0
+  name                = var.existing_private_dns_zone
+  resource_group_name = local.resource_group_name
+}
+
 resource "azurerm_private_dns_zone_virtual_network_link" "vnet_link" {
-  count                 = var.existing_private_dns_zone == null && (var.existing_private_subnet_name != null || var.enable_private_endpoint) ? 1 : 0
-  name                  = "vnet-private-zone-link"
-  resource_group_name   = local.resource_group_name
-  private_dns_zone_name = var.existing_private_dns_zone == null ? azurerm_private_dns_zone.dns_zone.0.name : var.existing_private_dns_zone
-  virtual_network_id    = data.azurerm_virtual_network.vnet.0.id
-  registration_enabled  = var.allow_auto_registration
-  tags                  = merge({ "Name" = format("%s", "vnet-private-zone-link") }, var.add_tags, )
+  count                = var.existing_private_dns_zone == null && (var.existing_private_subnet_name != null || var.enable_private_endpoint) ? 1 : 0
+  name                 = "vnet-private-zone-link"
+  private_dns_zone_id  = azurerm_private_dns_zone.dns_zone.0.id
+  virtual_network_id   = data.azurerm_virtual_network.vnet.0.id
+  registration_enabled = var.allow_auto_registration
+  tags                 = merge({ "Name" = format("%s", "vnet-private-zone-link") }, var.add_tags, )
 }
 
 resource "azurerm_private_dns_a_record" "a_rec" {
@@ -67,8 +72,7 @@ resource "azurerm_private_dns_a_record" "a_rec" {
   ]
   count               = var.enable_private_endpoint ? 1 : 0
   name                = lower(azurerm_redis_cache.redis.name)
-  zone_name           = var.existing_private_dns_zone == null ? azurerm_private_dns_zone.dns_zone.0.name : var.existing_private_dns_zone
-  resource_group_name = local.resource_group_name
+  private_dns_zone_id = var.existing_private_dns_zone == null ? azurerm_private_dns_zone.dns_zone.0.id : data.azurerm_private_dns_zone.existing_dns_zone.0.id
   ttl                 = 300
   records             = [data.azurerm_private_endpoint_connection.pip.0.private_service_connection.0.private_ip_address]
 }
